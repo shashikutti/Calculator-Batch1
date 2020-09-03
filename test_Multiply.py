@@ -1,13 +1,3 @@
-import pytest
-
-from MultiplayFunctions import multiplying
-
-billy = 5
-bob = 10
-joe = 15
-ven = 20
-kat = 25
-
 
 import pytest
 
