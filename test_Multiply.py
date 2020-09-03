@@ -18,7 +18,7 @@ kat = 25
 
 
 ])
-def test_add(a, b, expected):
+def test_multiply(a, b, expected):
     assert multiplying(a, b) == expected
 
 
