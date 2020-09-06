@@ -1,6 +1,6 @@
 import pytest
 
-from add import add
+from calc import add
 
 
 @pytest.mark.parametrize("a, b, expected", [
@@ -17,7 +17,17 @@ from add import add
 def test_add(a, b, expected):
     assert add(a, b) == expected
 
-# def test_add_characters():
-#     return_value = add(1, '2')
-#     print(type(return_value))
-#     assert return_value == '12'
+
+@pytest.mark.parametrize("a, b", [
+    (None, None),
+    (None, 20),
+    (30, None),
+    (1, '2'),
+    ('1', '2'),
+    ('1', 2),
+    ('first', 'second'),
+    (2 + 3j, 3 + 5j)
+])
+def test_negative(a, b):
+    with pytest.raises(TypeError):
+        add(a, b)
