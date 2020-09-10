@@ -13,4 +13,4 @@ import pytest
     (8**2, 2**3, 8)
 ])
 def test_divide(a, b, expected):
-    assert divide(a, b) == expected
+    assert test_divide(a, b) == expected
