@@ -1,4 +1,5 @@
 def multiply(a, b):
+
     if a is None:
         return b
     if b is None:
@@ -7,7 +8,10 @@ def multiply(a, b):
     type1 = type(a)
     type2 = type(b)
 
-    map(check_type, [[type1, 'First'], [type2, 'Second']])
+    acceptable_types = [int, float, complex]
+
+    check_type(acceptable_types, type1, 'First')
+    check_type(acceptable_types, type2, 'Second')
 
     return a * b
 
