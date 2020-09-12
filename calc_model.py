@@ -1,46 +1,47 @@
 import math
 
 
-def add(a, b):
-    check_types(a, b)
-    return a + b
+def add(num1, num2):
+    num1, num2 = convert_to_floats(num1, num2)
+    return num1 + num2
 
 
-def subtract(a, b):
-    check_types(a, b)
-    return a - b
+def subtract(num1, num2):
+    num1, num2 = convert_to_floats(num1, num2)
+    return num1 - num2
 
 
-def multiply(a, b):
-    check_types(a, b)
-    return a * b
+def multiply(num1, num2):
+    num1, num2 = convert_to_floats(num1, num2)
+    return num1 * num2
 
 
-def log(a):
-    check_type(a)
-    return math.log(a)
+def divide(num1, num2):
+    num1, num2 = convert_to_floats(num1, num2)
+    return num1/num2
 
 
-def log10(a):
-    check_type(a)
-    return math.log10(a)
+def log(num1):
+    num1, num2 = convert_to_float(num1)
+    return math.log(num1)
 
 
-def check_types(a, b):
-    check_type(a, 'First')
-    check_type(b, 'Second')
+def log10(num1):
+    num1 = convert_to_float(num1)
+    return math.log10(num1)
 
 
-def check_type(param, name=''):
+def convert_to_floats(num1, num2):
+    num1 = convert_to_float(num1)
+    num2 = convert_to_float(num2)
+    return num1, num2
+
+
+def convert_to_float(param):
     if param is None:
-        raise TypeError
+        raise ValueError
 
-    acceptable_types = [int, float]
-
-    param_type = type(param)
-
-    if param_type not in acceptable_types:
-        raise TypeError(f'{name} input parameter must be {acceptable_types}. Instead it is {str(param_type)}')
+    return float(param)
 
 # map(check_type, [[type1, 'First'], [type2, 'Second']])
 #
