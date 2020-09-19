@@ -12,6 +12,10 @@ def load_homepage():
         minus = '-'
         multiply = 'x'
         divide = '/'
+        power = '^'
+        fac = '!'
+        sqroot = '√'
+
         if plus in display_text:
             num1, num2 = display_text.split(plus)
             result = calc_model.add(num1, num2)
@@ -24,6 +28,17 @@ def load_homepage():
         elif divide in display_text:
             num1, num2 = display_text.split(divide)
             result = calc_model.divide(num1, num2)
+        elif power in display_text:
+            num1, num2 = display_text.split(power)
+            result = calc_model.power(num1, num2)
+        elif fac in display_text:
+            strlen = len(display_text)
+            substr = display_text[0:strlen-1]
+            result = calc_model.fac(substr)
+        elif sqroot in display_text:
+            strlen = len(display_text)
+            substr = display_text[1:strlen]
+            result = calc_model.sqroot(substr)
 
         return render_template('calc_view.html', result=result)
     else:
