@@ -1,36 +1,38 @@
-from flask import Flask, redirect, url_for, request
+import calc_model
+
+from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__name__)
 
 
-@app.route('/result/<a>/<b>/<value>/<operation>')
-def result(a, b, value, operation):
-    if operation == 'Add':
-        return f'{a} + {b} = {value}'
-    elif operation == 'Subtract':
-        return f'{a} - {b} = {value}'
-    elif operation == 'Multiply':
-        return f'{a} * {b} = {value}'
-    elif operation == 'Divide':
-        return f'{a} / {b} = {value}'
-
-
-@app.route('/calculator', methods=['POST', 'GET'])
-def Calculate():
+@app.route("/", methods=['POST', 'GET'])
+def main():
+    add = '+'
+    subtract = '-'
+    multiply = '×'
+    divide = '÷'
+    squared = '²'
+    result = 0
     if request.method == 'POST':
-        a = int(request.form['a'])
-        b = int(request.form['b'])
-        operation = request.form['operation']
-        if operation == 'Add':
-            return redirect(url_for('result', a=a, b=b, value=a + b, operation=operation))
-        elif operation == 'Subtract':
-            return redirect(url_for('result', a=a, b=b, value=a - b, operation=operation))
-        elif operation == 'Multiply':
-            return redirect(url_for('result', a=a, b=b, value=a * b, operation=operation))
-        elif operation == 'Divide':
-            return redirect(url_for('result', a=a, b=b, value=a / b, operation=operation))
+        display_text = request.form['display']
+        if add in display_text:
+            num1, num2 = display_text.split(add)
+            result = calc_model.add(num1, num2)
+        elif subtract in display_text:
+            num1, num2 = display_text.split(subtract)
+            result = calc_model.subtract(num1, num2)
+        elif multiply in display_text:
+            num1, num2 = display_text.split(multiply)
+            result = calc_model.multiply(num1, num2)
+        elif divide in display_text:
+            num1, num2 = display_text.split(divide)
+            result = calc_model.divide(num1, num2)
+        elif squared in display_text:
+            num1, num2 = display_text.split(squared)
+            result = calc_model.squared(num1)
+
+        return render_template('Calc_View.html', result=result)
     else:
-        a = request.args.get('a')
-        return redirect(url_for('result', value=a))
+        return render_template('Calc_View.html')
 
 
 if __name__ == '__main__':
