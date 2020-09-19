@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+        <style>
+            body {
+              background-color: lightblue;
+            }
+
+            h1 {
+              color: navy;
+              margin-left: 20px;
+            }
+
+            button {
+                width: 40px;
+                height: 40px;
+                border-radius: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="http://localhost:5000/" method="post">
+            <p><input type="text" name="display" id="display" value="{{result}}"/></p>
+            <p>
+                <button type="button" onclick="set_display('(')">(</button>
+                <button type="button" onclick="set_display(')')">)</button>
+                <button type="button" onclick="set_display('%')">%</button>
+                <button type="button" name="AC" onclick="clear_display()">AC</button>
+            </p>
+            <p>
+                <button type="button" onclick="set_display('7')">7</button>
+                <button type="button" onclick="set_display('8')">8</button>
+                <button type="button" onclick="set_display('9')">9</button>
+                <button type="button" onclick="set_display('/')">/</button>
+            </p>
+            <p>
+                <button type="button" onclick="set_display('4')">4</button>
+                <button type="button" onclick="set_display('5')">5</button>
+                <button type="button" onclick="set_display('6')">6</button>
+                <button type="button" onclick="set_display('x')">x</button>
+            </p>
+            <p>
+                <button type="button" onclick="set_display('1')">1</button>
+                <button type="button" onclick="set_display('2')">2</button>
+                <button type="button" onclick="set_display('3')">3</button>
+                <button type="button" onclick="set_display('-')">-</button>
+            </p>
+            <p>
+                <button type="button" onclick="set_display('0')">0</button>
+                <button type="button" onclick="set_display('.')">.</button>
+                <button type="submit" value="submit">=</button>
+                <button type="button" onclick="set_display('+')">+</button>
+            </p>
+        </form>
+        <script>
+            function set_display(char) {
+                document.getElementById("display").value += char
+            }
+
+            function clear_display() {
+                document.getElementById("display").value = ''
+            }
+        </script>
+    </body>
+</html>
