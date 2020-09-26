@@ -18,7 +18,7 @@ def multiply(num1, num2):
 
 def divide(num1, num2):
     num1, num2 = convert_to_floats(num1, num2)
-    return num1/num2
+    return num1 / num2
 
 
 def log(num1):
@@ -29,6 +29,11 @@ def log(num1):
 def log10(num1):
     num1 = convert_to_float(num1)
     return math.log10(num1)
+
+
+def percentage(num1):
+    num1 = convert_to_float(num1)
+    return num1 / 100
 
 
 def convert_to_floats(num1, num2):

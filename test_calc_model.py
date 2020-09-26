@@ -16,6 +16,12 @@ from calc_model import add
 def test_add(a, b, expected):
     assert add(a, b) == expected
 
+@pytest.mark.parametrize("a, expected", [
+    (100, 1),
+    (5, 0.05)
+])
+def test_percentage(a, expected):
+    assert percentage(a) == expected
 
 @pytest.mark.parametrize("a, b", [
     (None, None),

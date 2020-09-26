@@ -12,6 +12,7 @@ def load_homepage():
         minus = '-'
         multiply = 'x'
         divide = '/'
+        percentage = '%'
         if plus in display_text:
             num1, num2 = display_text.split(plus)
             result = calc_model.add(num1, num2)
@@ -24,6 +25,9 @@ def load_homepage():
         elif divide in display_text:
             num1, num2 = display_text.split(divide)
             result = calc_model.divide(num1, num2)
+        elif percentage in display_text:
+            num1, num2 = display_text.split(percentage)
+            result = calc_model.percentage(num1)
 
         return render_template('calc_view.html', result=result)
     else:
